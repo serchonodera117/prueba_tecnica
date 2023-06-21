@@ -11,6 +11,7 @@ const Component = ({
     height,
     index,
     color,
+    img,
     id,
     setSelected,
     isSelected = false,
@@ -26,11 +27,21 @@ const Component = ({
       index,
       color,
       id,
+      img
     });
-  
+
+    const [myImg, setImg] = useState(img)
     let parent = document.getElementById("parent");
     let parentBounds = parent?.getBoundingClientRect();
     
+
+
+    useEffect(()=>{
+        if(img)
+        setImg(img)
+        console.log(img)
+    },[img])
+
     const onResize = async (e) => {
       // ACTUALIZAR ALTO Y ANCHO
       let newWidth = e.width;
@@ -106,9 +117,9 @@ const Component = ({
   
     return (
       <>
-        <div
+        <div          
           ref={ref}
-          className="draggable"
+          className="draggable test"
           id={"component-" + id}
           style={{
             position: "absolute",
@@ -119,7 +130,11 @@ const Component = ({
             background: color,
           }}
           onClick={() => setSelected(id)}
-        />
+        >
+        {(img)?
+             <img src={img.url} className="image"></img>:<div></div>
+            }
+        </div>
   
         <Moveable
           target={isSelected && ref.current}

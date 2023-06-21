@@ -5,11 +5,13 @@ import Component from "./components/component";
 const App = () => {
   const [moveableComponents, setMoveableComponents] = useState([]);
   const [selected, setSelected] = useState(null);
-
+  const [idImage, setIdImage] = useState(1)
+  
+  const [objImage, setObjImage] = useState([])
   const addMoveable = () => {
     // Create a new moveable component and add it to the array
     const COLORS = ["red", "blue", "yellow", "green", "purple"];
-
+    getImage(idImage);
     setMoveableComponents([
       ...moveableComponents,
       {
@@ -19,10 +21,10 @@ const App = () => {
         width: 100,
         height: 100,
         color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        updateEnd: true
+        updateEnd: true,
       },
     ]);
-    
+    setIdImage(idImage+1);
   };
 
   const updateMoveable = (id, newComponent, updateEnd = false) => {
@@ -56,6 +58,14 @@ const App = () => {
     }
   };
 
+  //http request
+ function getImage(id){
+    let url = `https://jsonplaceholder.typicode.com/photos?id=${id}`
+    fetch(url).then(response => response.json())
+    .then(data=>{
+      setObjImage(current=>[...current, data[0]]);
+    })
+  }
   return (
     <main style={{ height : "100vh", width: "100vw" }}>
       <button onClick={addMoveable}>Add Moveable1</button>
@@ -75,6 +85,7 @@ const App = () => {
             handleResizeStart={handleResizeStart}
             setSelected={setSelected}
             isSelected={selected === item.id}
+            img = {objImage[index]}
           />
         ))}
       </div>
