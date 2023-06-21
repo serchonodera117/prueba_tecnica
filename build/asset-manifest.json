@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/prueba_tecnica/build/static/css/main.073c9b0a.css",
+    "main.js": "/prueba_tecnica/build/static/js/main.a01e318d.js",
+    "static/js/787.8f163d29.chunk.js": "/prueba_tecnica/build/static/js/787.8f163d29.chunk.js",
+    "index.html": "/prueba_tecnica/build/index.html",
+    "main.073c9b0a.css.map": "/prueba_tecnica/build/static/css/main.073c9b0a.css.map",
+    "main.a01e318d.js.map": "/prueba_tecnica/build/static/js/main.a01e318d.js.map",
+    "787.8f163d29.chunk.js.map": "/prueba_tecnica/build/static/js/787.8f163d29.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.a01e318d.js"
+  ]
+}
