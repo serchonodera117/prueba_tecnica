@@ -78,7 +78,7 @@ const App = () => {
         }}
       >
         {moveableComponents.map((item, index) => (
-          <Component
+          <Component bounds="parent"
             {...item}
             key={index}
             updateMoveable={updateMoveable}
