@@ -66,6 +66,15 @@ const App = () => {
       setObjImage(current=>[...current, data[0]]);
     })
   }
+
+  function deleteItem(idItem, idImage){
+    let index = objImage.findIndex(item => item.id = idImage)
+    objImage.splice(index, 1);
+
+    let newArray = moveableComponents.filter(item => item.id !== idItem);
+    setMoveableComponents(newArray, idImage);
+
+  }
   return (
     <main style={{ height : "100vh", width: "100vw" }}>
       <button onClick={addMoveable}>Add Moveable1</button>
@@ -86,6 +95,7 @@ const App = () => {
             setSelected={setSelected}
             isSelected={selected === item.id}
             img = {objImage[index]}
+            onDelete = {deleteItem}
           />
         ))}
       </div>

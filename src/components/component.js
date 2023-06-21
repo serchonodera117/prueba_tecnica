@@ -16,6 +16,7 @@ const Component = ({
     setSelected,
     isSelected = false,
     updateEnd,
+    onDelete
   }) => {
     const ref = useRef();
   
@@ -72,7 +73,7 @@ const Component = ({
       let translateX = beforeTranslate[0];
       let translateY = beforeTranslate[1];
   
-      ref.current.style.transform = `translate(${translateX}px, ${translateY}px)`;
+    //   ref.current.style.transform = `translate(${translateX}px, ${translateY}px)`;
   
       setNodoReferencia({
         ...nodoReferencia,
@@ -87,20 +88,17 @@ const Component = ({
       let newWidth = e.lastEvent?.width;
       let newHeight = e.lastEvent?.height;
   
-      const positionMaxTop = top + newHeight;
-      const positionMaxLeft = left + newWidth;
+      const positionMaxTop = top ;
+      const positionMaxLeft = left ;
   
-      if (positionMaxTop > parentBounds?.height)
-        newHeight = parentBounds?.height - top;
-      if (positionMaxLeft > parentBounds?.width)
-        newWidth = parentBounds?.width - left;
+
   
       const { lastEvent } = e;
       const { drag } = lastEvent;
       const { beforeTranslate } = drag;
   
-      const absoluteTop = top + beforeTranslate[1];
-      const absoluteLeft = left + beforeTranslate[0];
+      const absoluteTop = top ;
+      const absoluteLeft = left ;
   
       updateMoveable(
         id,
@@ -115,6 +113,10 @@ const Component = ({
       );
     };
   
+
+    function deleteItem(){
+        onDelete(id, img.id);
+    }
     return (
       <>
         <div          
@@ -134,6 +136,7 @@ const Component = ({
         {(img)?
              <img src={img.url} className="image"></img>:<div></div>
             }
+            <button onClick={deleteItem}> Borrar</button>
         </div>
   
         <Moveable
