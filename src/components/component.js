@@ -40,7 +40,6 @@ const Component = ({
     useEffect(()=>{
         if(img)
         setImg(img)
-        console.log(img)
     },[img])
 
     const onResize = async (e) => {
@@ -72,9 +71,8 @@ const Component = ({
   
       let translateX = beforeTranslate[0];
       let translateY = beforeTranslate[1];
-  
-    //   ref.current.style.transform = `translate(${translateX}px, ${translateY}px)`;
-  
+
+      ref.current.style.transform = `translate(${translateX}px, ${translateY}px)`;
       setNodoReferencia({
         ...nodoReferencia,
         translateX,
@@ -136,7 +134,7 @@ const Component = ({
         {(img)?
              <img src={img.url} className="image"></img>:<div></div>
             }
-            <button onClick={deleteItem}> Borrar</button>
+            <button className="borrar" onClick={deleteItem}> Borrar </button>
         </div>
   
         <Moveable

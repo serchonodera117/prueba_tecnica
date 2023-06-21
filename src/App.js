@@ -1,12 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import Moveable from "react-moveable";
 import Component from "./components/component";
+import "./myStyles/component.css"
 
 const App = () => {
   const [moveableComponents, setMoveableComponents] = useState([]);
   const [selected, setSelected] = useState(null);
   const [idImage, setIdImage] = useState(1)
-  
+
   const [objImage, setObjImage] = useState([])
   const addMoveable = () => {
     // Create a new moveable component and add it to the array
@@ -68,7 +69,7 @@ const App = () => {
   }
 
   function deleteItem(idItem, idImage){
-    let index = objImage.findIndex(item => item.id = idImage)
+    let index = objImage.findIndex(item => item.id == idImage)
     objImage.splice(index, 1);
 
     let newArray = moveableComponents.filter(item => item.id !== idItem);
@@ -76,9 +77,9 @@ const App = () => {
 
   }
   return (
-    <main style={{ height : "100vh", width: "100vw" }}>
-      <button onClick={addMoveable}>Add Moveable1</button>
-      <div id="parent"
+    <main  style={{ height : "100vh", width: "100vw" }}>
+      <button className="btn-add" onClick={addMoveable}>Add Moveable {idImage}</button>
+      <div className="component" id="parent"
         style={{
           position: "relative",
           background: "black",
